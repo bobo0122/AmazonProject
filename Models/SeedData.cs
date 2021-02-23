@@ -79,7 +79,7 @@ namespace AmazonProject.Models
                          Classification = "Non-Fiction",
                          Category = "Biography",
                          Price = 11.61,
-                         Page = 864
+                         Page = 528
 
                      },
                       new Book
@@ -91,7 +91,7 @@ namespace AmazonProject.Models
                           Classification = "Non-Fiction",
                           Category = "Biography",
                           Price = 11.61,
-                          Page = 864
+                          Page = 288
 
                       },
                       new Book
@@ -103,7 +103,7 @@ namespace AmazonProject.Models
                           Classification = "Fiction",
                           Category = "Historical Fiction",
                           Price = 11.61,
-                          Page = 864
+                          Page = 304
 
                       }
                     );
