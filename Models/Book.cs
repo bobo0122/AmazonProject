@@ -24,8 +24,12 @@ namespace AmazonProject.Models
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{10})$", ErrorMessage = "Invalid ISBN, please re-enter a 13-digit number. ")]
         public string ISBN { get; set; }
         [Required]
-        public string Classification_Category { get; set; }
+        public string Classification { get; set; }
+        [Required]
+        public string Category { get; set; }
         [Required]
         public double Price { get; set; }
+        [Required]
+        public int Page { get; set; }
     }
 }

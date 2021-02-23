@@ -14,6 +14,8 @@ namespace AmazonProject.Controllers
         private readonly ILogger<HomeController> _logger;
 
         private IAmazonRepository _repository;
+
+        public int PageSize = 5;
         public HomeController(ILogger<HomeController> logger, IAmazonRepository repository)
         {
             _logger = logger;
@@ -21,7 +23,7 @@ namespace AmazonProject.Controllers
 
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
             return View(_repository.Books);
         }
