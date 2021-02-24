@@ -138,7 +138,41 @@ namespace AmazonProject.Models
                               Category = "Thrillers",
                               Price = 15.03,
                               PageNo = 642
-                          }
+                          },
+                          //my three fav books are the following
+                           new Book
+                           {
+                               Title = "The Count of Monte Cristo",
+                               Author = "Alexandre Dumas",
+                               Publisher = "Penguin Books Ltd",
+                               ISBN = "978-1593081515",
+                               Classification = "Fiction",
+                               Category = "Romance",
+                               Price = 16,
+                               PageNo = 640
+                           },
+                            new Book
+                            {
+                                Title = "The Way of Kings",
+                                Author = "Brandon Sanderson",
+                                Publisher = "Tor Books",
+                                ISBN = "978-1448792757",
+                                Classification = "Fiction",
+                                Category = "Fantasy",
+                                Price = 15.03,
+                                PageNo = 642
+                            },
+                             new Book
+                             {
+                                 Title = "Wuthering Heights",
+                                 Author = "Emily Brontë",
+                                 Publisher = "Thomas Cautley Newby",
+                                 ISBN = "978-0141040356",
+                                 Classification = "Fiction",
+                                 Category = "Novel",
+                                 Price = 6.19,
+                                 PageNo = 384
+                             }
 
                     );
                 context.SaveChanges();
