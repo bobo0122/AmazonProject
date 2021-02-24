@@ -32,7 +32,7 @@ namespace AmazonProject.Models
                         Classification = "Fiction",
                         Category = "Classic",
                         Price = 9.95,
-                        Page = 1488
+                        PageNo = 1488
                     },
                     new Book
                     {
@@ -44,7 +44,7 @@ namespace AmazonProject.Models
                         Classification = "Non-Fiction",
                         Category = "Biography",
                         Price = 14.58,
-                        Page = 944
+                        PageNo = 944
                     },
                     new Book
                     {
@@ -56,7 +56,7 @@ namespace AmazonProject.Models
                         Classification = "Non-Fiction",
                         Category = "Biography",
                         Price = 21.54,
-                        Page = 832
+                        PageNo = 832
                     },
                     new Book
                     {
@@ -67,19 +67,19 @@ namespace AmazonProject.Models
                         Classification = "Non-Fiction",
                         Category = "Biography",
                         Price = 11.61,
-                        Page = 864
+                        PageNo = 864
 
                     },
                      new Book
                      {
-                         Title = "American Ulysses",
-                         Author = "Ronald C. White",
-                         Publisher = "Random House",
-                         ISBN = "978-0812981254",
+                         Title = "Deep Work",
+                         Author = "Cal Newport",
+                         Publisher = "Grand Central Publishing",
+                         ISBN ="978-1455586691",
                          Classification = "Non-Fiction",
-                         Category = "Biography",
-                         Price = 11.61,
-                         Page = 528
+                         Category = "Self-Help",
+                         Price = 14.99,
+                         PageNo = 304
 
                      },
                       new Book
@@ -90,8 +90,8 @@ namespace AmazonProject.Models
                           ISBN = "978-0812974492",
                           Classification = "Non-Fiction",
                           Category = "Biography",
-                          Price = 11.61,
-                          Page = 288
+                          Price = 13.33,
+                          PageNo = 288
 
                       },
                       new Book
@@ -102,10 +102,44 @@ namespace AmazonProject.Models
                           ISBN = "978-0804171281",
                           Classification = "Fiction",
                           Category = "Historical Fiction",
-                          Price = 11.61,
-                          Page = 304
+                          Price = 15.95,
+                          PageNo = 304
 
-                      }
+                      },
+                        new Book
+                        {
+                            Title = "It's Your Ship",
+                            Author = "Michael Abrashoff",
+                            Publisher = "Grand Central Publishing",
+                            ISBN = "978-1455523023",
+                            Classification = "Fiction",
+                            Category = "Self-Help",
+                            Price = 21.66,
+                            PageNo = 240
+                         },
+                         new Book
+                           {
+                            Title = "The Virgin Way",
+                            Author = "Richard Branson",
+                            Publisher = "Portfolio",
+                            ISBN = "978-1591847984",
+                            Classification = "Non-Fiction",
+                            Category = "Business",
+                            Price = 29.16,
+                            PageNo = 400
+                        },
+                          new Book
+                          {
+                              Title = "Syncamore Row",
+                              Author = "John Grisham",
+                              Publisher = "Bantam",
+                              ISBN = "978-0553393613",
+                              Classification = "Fiction",
+                              Category = "Thrillers",
+                              Price = 15.03,
+                              PageNo = 642
+                          }
+
                     );
                 context.SaveChanges();
             }

@@ -30,6 +30,6 @@ namespace AmazonProject.Models
         [Required]
         public double Price { get; set; }
         [Required]
-        public int Page { get; set; }
+        public int PageNo { get; set; }
     }
 }

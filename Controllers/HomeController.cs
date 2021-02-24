@@ -1,4 +1,5 @@
 ﻿using AmazonProject.Models;
+using AmazonProject.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -15,6 +16,7 @@ namespace AmazonProject.Controllers
 
         private IAmazonRepository _repository;
 
+        //we want 5 items per page 
         public int PageSize = 5;
         public HomeController(ILogger<HomeController> logger, IAmazonRepository repository)
         {
@@ -23,9 +25,22 @@ namespace AmazonProject.Controllers
 
         }
 
+        //paging info 
         public IActionResult Index(int page = 1)
         {
-            return View(_repository.Books);
+            return View(new BookListViewModel
+            {
+                Books = _repository.Books
+                .OrderBy(p => p.BookId)
+               .Skip((page - 1) * PageSize)
+               .Take(PageSize)
+               ,PagingInfo = new PagingInfo
+               {
+                   CurrentPage = page,
+                   ItemsPerPage = PageSize,
+                   TotalNumItems = _repository.Books.Count()
+               }
+            });
         }
 
         public IActionResult Privacy()

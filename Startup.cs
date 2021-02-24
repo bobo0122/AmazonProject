@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AmazonProject.Models;
 
+
 namespace AmazonProject
 {
     public class Startup
@@ -20,7 +21,7 @@ namespace AmazonProject
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -31,8 +32,6 @@ namespace AmazonProject
                 options.UseSqlServer(Configuration["ConnectionStrings:AmazonProjectConnection"]);
             });
                                                     //name should be the same with the model
-
-
             services.AddScoped<IAmazonRepository, EFAmazonRepository>();
         }
 
@@ -56,11 +55,14 @@ namespace AmazonProject
 
             app.UseAuthorization();
 
+            //new pagination
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                 "pagination",
+                 "Books/{page}",
+                 new { Controller = "Home", action = "Index" });
+                endpoints.MapDefaultControllerRoute();
             });
             //!!!!!!
             SeedData.EnsurePopulated(app);
