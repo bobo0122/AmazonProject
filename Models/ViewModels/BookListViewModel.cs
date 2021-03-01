@@ -12,6 +12,7 @@ namespace AmazonProject.Models.ViewModels
 
         //building a new model for the index page in particular
         public PagingInfo PagingInfo { get; set; }
+        public string CurrentCategory { get; set; }
 
     }
 }

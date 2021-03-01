@@ -58,6 +58,17 @@ namespace AmazonProject
             //new pagination
             app.UseEndpoints(endpoints =>
             {
+
+                endpoints.MapControllerRoute("catpage",
+                    "{category}/{page:int}",
+                    new { Controller = "Home", action = "Index" });
+                endpoints.MapControllerRoute("page",
+                    "Books/{page:int}",
+                    new { Controller = "Home", action = "Index" });
+                endpoints.MapControllerRoute("category",
+                    "{category}",
+                    new { Controller = "Home", action = "Index", page = 1 });
+
                 endpoints.MapControllerRoute(
                  "pagination",
                  "/P{page}",
