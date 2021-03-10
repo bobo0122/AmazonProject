@@ -13,5 +13,7 @@ namespace AmazonProject.Models
 
         }
         public DbSet<Book> Books { get; set; }
+        //pull in another table
+        //public DbSet<Author> Author { get; set; }
     }
 }

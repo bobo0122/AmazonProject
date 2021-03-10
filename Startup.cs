@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AmazonProject.Models;
-
+using Microsoft.AspNetCore.Http;
 
 namespace AmazonProject
 {
@@ -29,10 +29,17 @@ namespace AmazonProject
             services.AddControllersWithViews();
             services.AddDbContext<AmazonDbContext>(options =>
             {
-                options.UseSqlServer(Configuration["ConnectionStrings:AmazonProjectConnection"]);
+                options.UseSqlite(Configuration["ConnectionStrings:AmazonProjectConnection"]);
             });
                                                     //name should be the same with the model
             services.AddScoped<IAmazonRepository, EFAmazonRepository>();
+            services.AddRazorPages();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+
+            services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,20 +57,21 @@ namespace AmazonProject
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseSession();
 
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.Use(async (context, next) => { context.Response.Headers.Add("X-Xss-   Protection", "1"); await next(); });
             //new pagination
             app.UseEndpoints(endpoints =>
             {
 
                 endpoints.MapControllerRoute("catpage",
-                    "{category}/{page:int}",
+                    "{category}/{pageNum:int}",
                     new { Controller = "Home", action = "Index" });
                 endpoints.MapControllerRoute("page",
-                    "Books/{page:int}",
+                    "Books/{pageNum:int}",
                     new { Controller = "Home", action = "Index" });
                 endpoints.MapControllerRoute("category",
                     "{category}",
@@ -71,9 +79,11 @@ namespace AmazonProject
 
                 endpoints.MapControllerRoute(
                  "pagination",
-                 "/P{page}",
+                 "/P{pageNum}",
                  new { Controller = "Home", action = "Index" });
                 endpoints.MapDefaultControllerRoute();
+               //new razor page service routing
+                endpoints.MapRazorPages();
             });
             //!!!!!!
             SeedData.EnsurePopulated(app);
